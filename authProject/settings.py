@@ -15,10 +15,11 @@ import django_heroku
 
 from pathlib import Path
 from datetime import timedelta
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+# Load environment variables from .env file if is not in Heroku
+if not os.environ.get('IS_HEROKU', None):
+    from dotenv import load_dotenv
+    load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +33,7 @@ SECRET_KEY = os.environ.get(
     'SECRET_KEY', 'django-insecure-3ngw8dbn4&wx8f%7***+m(%7$p7l(3sm!1pkmq3&u!6=ng39a8')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG_FLAG', True)
+DEBUG = os.environ.get('DEBUG', True)
 
 ALLOWED_HOSTS = []
 
