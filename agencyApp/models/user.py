@@ -32,8 +32,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     id = models.BigAutoField(primary_key=True)
     username = models.CharField('Username', max_length=15, unique=True)
     password = models.CharField('Password', max_length=256)
-    name = models.CharField('Name', max_length=30)
+    firstName = models.CharField('First Name', max_length=30)
+    lastName = models.CharField('Last Name', max_length=30)
     email = models.EmailField('Email', max_length=100)
+    country = models.CharField('Country', max_length=50)
+    birthDay = models.DateTimeField('Birth Day')
+    createdAt = models.DateTimeField(auto_now_add=True)
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
