@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'authApp',
     'agencyApp',
 ]
 
@@ -78,7 +77,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
 }
 
-AUTH_USER_MODEL = 'authApp.User'
+AUTH_USER_MODEL = 'agencyApp.User'
 
 ROOT_URLCONF = 'agencyProject.urls'
 
