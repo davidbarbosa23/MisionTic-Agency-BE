@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     lastName = models.CharField('Last Name', max_length=30)
     email = models.EmailField('Email', max_length=100)
     country = models.CharField('Country', max_length=50)
-    birthDay = models.DateTimeField('Birth Day')
+    birthDay = models.DateField('Birth Day')
     createdAt = models.DateTimeField(auto_now_add=True)
 
     def save(self, **kwargs):
