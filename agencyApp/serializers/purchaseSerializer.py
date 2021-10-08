@@ -7,9 +7,6 @@ from agencyApp.serializers.packSerializer import PackSerializer
 
 
 class PurchaseSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-    pack = PackSerializer()
-
     class Meta:
         model = Purchase
         fields = ['id', 'user', 'pack', 'total', 'buyerCard',
@@ -20,22 +17,21 @@ class PurchaseSerializer(serializers.ModelSerializer):
         return purchaseInstance
 
     def to_representation(self, obj):
-        user = User.objects.get(id=obj.user)
-        pack = Pack.objects.get(id=obj.pack)
         purchase = Purchase.objects.get(id=obj.id)
+        print(purchase)
         return {
             'id': purchase.id,
             'user': {
-                'id': user.id,
-                'firstName': user.firstName,
-                'lastName': user.lastName,
-                'email': user.email,
-                'counrty': user.counrty,
+                'id': purchase.user.id,
+                'first_name': purchase.user.first_name,
+                'last_name': purchase.user.last_name,
+                'email': purchase.user.email,
+                'country': purchase.user.country,
             },
             'pack': {
-                'id': pack.id,
-                'title': pack.title,
-                'description': pack.description,
+                'id': purchase.pack.id,
+                'title': purchase.pack.title,
+                'description': purchase.pack.description,
             },
             'total': purchase.total,
             'buyerCard': purchase.buyerCard,

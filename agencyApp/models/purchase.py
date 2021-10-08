@@ -4,7 +4,6 @@ from .pack import Pack
 
 
 class Purchase(models.Model):
-    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey('User', on_delete=models.PROTECT)
     pack = models.ForeignKey('Pack', on_delete=models.PROTECT)
     total = models.DecimalField(max_digits=10, decimal_places=2)
