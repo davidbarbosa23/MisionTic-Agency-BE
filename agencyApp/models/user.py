@@ -4,23 +4,18 @@ from django.contrib.auth.hashers import make_password
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password=None):
-        """
-        Creates and saves a user with the given username and password.
-        """
+    def create_user(self, username, email, password=None):
         if not username:
             raise ValueError('Users must have an username')
-        user = self.model(username=username)
+        user = self.model(username=username, email=email)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, password):
-        """
-        Creates and saves a superuser with the given username and password.
-        """
+    def create_superuser(self, username, email, password):
         user = self.create_user(
             username=username,
+            email=email,
             password=password,
         )
         user.is_admin = True
@@ -29,19 +24,42 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.BigAutoField(primary_key=True)
+    # id = models.BigAutoField(primary_key=True)
     username = models.CharField('Username', max_length=15, unique=True)
-    password = models.CharField('Password', max_length=256)
-    firstName = models.CharField('First Name', max_length=30)
-    lastName = models.CharField('Last Name', max_length=30)
+    is_active = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+    # password = models.CharField('Password', max_length=256)
+    # first_name = models.CharField('First Name', max_length=30)
+    # last_name = models.CharField('Last Name', max_length=30)
     email = models.EmailField('Email', max_length=100)
-    country = models.CharField('Country', max_length=50)
-    birthDay = models.DateField('Birth Day')
+    country = models.CharField('Country', max_length=50, null=True, blank=True)
+    birthDay = models.DateField('Birth Day', null=True, blank=True)
     createdAt = models.DateTimeField(auto_now_add=True)
 
-    def save(self, **kwargs):
-        some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
-        self.password = make_password(self.password, some_salt)
-        super().save(**kwargs)
+    # def save(self, **kwargs):
+    #     some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
+    #     self.password = make_password(self.password, some_salt)
+    #     super().save(**kwargs)
     objects = UserManager()
+
     USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+    def __str__(self):
+        return self.username
+
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    def has_module_perms(self, app_label):
+        "Does the user have permissions to view the app `app_label`?"
+        # Simplest possible answer: Yes, always
+        return True
+
+    @property
+    def is_staff(self):
+        "Is the user a member of staff?"
+        # Simplest possible answer: All admins are staff
+        return self.is_admin
