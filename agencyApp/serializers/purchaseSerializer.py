@@ -1,9 +1,5 @@
 from rest_framework import serializers
 from agencyApp.models.purchase import Purchase
-from agencyApp.models.user import User
-from agencyApp.models.pack import Pack
-from agencyApp.serializers.userSerializer import UserSerializer
-from agencyApp.serializers.packSerializer import PackSerializer
 
 
 class PurchaseSerializer(serializers.ModelSerializer):
