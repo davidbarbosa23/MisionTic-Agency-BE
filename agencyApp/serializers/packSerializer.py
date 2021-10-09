@@ -6,8 +6,8 @@ class PackSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Pack
-        fields = ['id', 'title', 'description', 'price', 'isActive',
-                  'discount', 'country', 'createdAt', 'modifiedAt']
+        fields = ['id', 'title', 'description', 'price', 'is_active',
+                  'discount', 'country', 'image_url', 'created_at', 'modified_at']
 
     def create(self, validated_data):
         packInstance = Pack.objects.create(**validated_data)
@@ -20,9 +20,10 @@ class PackSerializer(serializers.ModelSerializer):
             'title': pack.title,
             'description': pack.description,
             'price': pack.price,
-            'isActive': pack.isActive,
+            'is_active': pack.is_active,
             'discount': pack.discount,
             'country': pack.country,
-            'createdAt': pack.createdAt,
-            'modifiedAt': pack.modifiedAt
+            'image_url': pack.image_url,
+            'created_at': pack.created_at,
+            'modified_at': pack.modified_at
         }

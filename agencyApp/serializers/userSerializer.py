@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'password', 'first_name',
-                  'last_name', 'email', 'country', 'birthDay', 'createdAt']
+                  'last_name', 'email', 'country', 'birth_day', 'created_at']
 
     def create(self, validated_data):
         userInstance = User.objects.create(**validated_data)
@@ -26,6 +26,6 @@ class UserSerializer(serializers.ModelSerializer):
             'last_name': user.last_name,
             'email': user.email,
             'country': user.country,
-            'birthDay': user.birthDay,
-            'createdAt': user.createdAt
+            'birth_day': user.birth_day,
+            'created_at': user.created_at
         }

@@ -30,8 +30,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField('Last Name', max_length=30)
     email = models.EmailField('Email', max_length=100)
     country = models.CharField('Country', max_length=50, null=True, blank=True)
-    birthDay = models.DateField('Birth Day', null=True, blank=True)
-    createdAt = models.DateTimeField(auto_now_add=True)
+    birth_day = models.DateField('Birth Day', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     objects = UserManager()
 

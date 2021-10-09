@@ -5,8 +5,8 @@ from agencyApp.models.purchase import Purchase
 class PurchaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Purchase
-        fields = ['id', 'user', 'pack', 'total', 'buyerCard',
-                  'buyerCardName', 'buyerCardDueDate', 'buyerCardCVV', 'createdAt']
+        fields = ['id', 'user', 'pack', 'total', 'buyer_card',
+                  'buyer_card_name', 'buyer_card_due_date', 'buyer_card_cvv', 'created_at']
 
     def create(self, validated_data):
         purchaseInstance = Purchase.objects.create(**validated_data)
@@ -30,9 +30,9 @@ class PurchaseSerializer(serializers.ModelSerializer):
                 'description': purchase.pack.description,
             },
             'total': purchase.total,
-            'buyerCard': purchase.buyerCard,
-            'buyerCardName': purchase.buyerCardName,
-            'buyerCardDueDate': purchase.buyerCardDueDate,
-            'buyerCardCVV': purchase.buyerCardCVV,
-            'createdAt': purchase.createdAt
+            'buyer_card': purchase.buyer_card,
+            'buyer_card_name': purchase.buyer_card_name,
+            'buyer_card_due_date': purchase.buyer_card_due_date,
+            'buyer_card_cvv': purchase.buyer_card_cvv,
+            'created_at': purchase.created_at
         }
