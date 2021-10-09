@@ -29,6 +29,7 @@ urlpatterns = [
     path('user/<int:pk>/', views.UserDetailView.as_view()),
 
     path('pack/', views.PackCreateView.as_view()),
+    path('pack/list/', views.PackGetListView.as_view()),
 
     path('purchase/', views.PurchaseCreateView.as_view()),
 ]
