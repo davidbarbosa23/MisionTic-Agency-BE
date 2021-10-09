@@ -31,4 +31,6 @@ urlpatterns = [
     path('pack/', views.PackCreateView.as_view()),
 
     path('purchase/', views.PurchaseCreateView.as_view()),
+
+    path('pack/edit/<int:id>/', views.PackEditView.as_view()),
 ]
