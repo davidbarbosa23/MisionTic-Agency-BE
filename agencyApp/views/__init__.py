@@ -8,3 +8,5 @@ from .packEditView import PackEditView
 from .packEraseView import PackEraseView
 
 from .purchaseCreateView import PurchaseCreateView
+from .purchaseGetListView import PurchaseGetListView
+
