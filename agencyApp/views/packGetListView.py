@@ -3,6 +3,6 @@ from agencyApp.models.pack import Pack
 from agencyApp.serializers.packSerializer import PackSerializer
 
 
-class PackGetListView(generics.ListCreateAPIView):
+class PackGetListView(generics.ListAPIView):
     queryset = Pack.objects.all()
     serializer_class = PackSerializer
