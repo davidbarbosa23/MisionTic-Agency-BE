@@ -6,6 +6,3 @@ from agencyApp.serializers.userSerializer import UserSerializer
 class UserGetListView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
- 
-    
-
