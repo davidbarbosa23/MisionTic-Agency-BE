@@ -30,7 +30,7 @@ urlpatterns = [
     path('user/<int:id>/', views.UserGetView.as_view()),
 
     path('pack/', views.PackAdminView.as_view()),
-    path('pack/list/', views.PackGetListView.as_view()),
+    path('pack/list/', views.PackDetailView.as_view()),
     path('pack/list/<int:id>/', views.PackDetailView.as_view()),
     path('pack/<int:id>/', views.PackAdminView.as_view()),
 
