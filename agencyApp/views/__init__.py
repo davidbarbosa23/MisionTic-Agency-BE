@@ -1,12 +1,8 @@
-from .userGetListView import UserGetListView
+from .userGetView import UserGetView
 from .userCreateView import UserCreateView
-from .userDetailView import UserDetailView
 
-from .packGetListView import PackGetListView
-from .packCreateView import PackCreateView
-from .packEditView import PackEditView
-from .packEraseView import PackEraseView
+from .packAdminView import PackAdminView
+from .packDetailView import PackDetailView
 
 from .purchaseCreateView import PurchaseCreateView
-from .purchaseGetListView import PurchaseGetListView
-
+from .purchaseGetView import PurchaseGetView
