@@ -36,5 +36,6 @@ urlpatterns = [
 
     path('purchase/', views.PurchaseCreateView.as_view()),
     path('purchase/list/', views.PurchaseGetView.as_view()),
+    path('purchase/list/<int:userid>/', views.PurchaseGetView.as_view()),
     path('purchase/<int:id>/', views.PurchaseGetView.as_view()),
 ]
