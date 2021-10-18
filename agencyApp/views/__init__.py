@@ -2,7 +2,7 @@ from .userGetView import UserGetView
 from .userCreateView import UserCreateView
 
 from .packAdminView import PackAdminView
-from .packDetailView import PackDetailView
+from .packGetView import PackGetView
 
 from .purchaseCreateView import PurchaseCreateView
 from .purchaseGetView import PurchaseGetView
