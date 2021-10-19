@@ -1,6 +1,6 @@
 from rest_framework import status, views
 from rest_framework.response import Response
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from agencyApp.serializers.cusTokenSerializer import CusTokenSerializer
 from agencyApp.serializers.userSerializer import UserSerializer
 
 
@@ -13,6 +13,6 @@ class UserCreateView(views.APIView):
             "username": request.data["username"],
             "password": request.data["password"],
         }
-        tokenSerializer = TokenObtainPairSerializer(data=tokenData)
+        tokenSerializer = CusTokenSerializer(data=tokenData)
         tokenSerializer.is_valid(raise_exception=True)
         return Response(tokenSerializer.validated_data, status=status.HTTP_201_CREATED)

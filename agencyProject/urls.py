@@ -22,7 +22,7 @@ from agencyApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('login/', TokenObtainPairView.as_view()),
+    path('login/', views.CusTokenView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
     path('register/', views.UserCreateView.as_view()),
 

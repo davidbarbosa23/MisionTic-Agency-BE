@@ -1,3 +1,5 @@
+from .cusTokenView import CusTokenView
+
 from .userGetView import UserGetView
 from .userCreateView import UserCreateView
 
