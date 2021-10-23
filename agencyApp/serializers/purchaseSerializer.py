@@ -19,6 +19,7 @@ class PurchaseSerializer(serializers.ModelSerializer):
             'id': purchase.id,
             'user': {
                 'id': purchase.user.id,
+                'username': purchase.user.username,
                 'first_name': purchase.user.first_name,
                 'last_name': purchase.user.last_name,
                 'email': purchase.user.email,
@@ -28,6 +29,7 @@ class PurchaseSerializer(serializers.ModelSerializer):
                 'id': purchase.pack.id,
                 'title': purchase.pack.title,
                 'description': purchase.pack.description,
+                'image_url': purchase.pack.image_url,
             },
             'total': purchase.total,
             'buyer_card': purchase.buyer_card,
